@@ -117,12 +117,6 @@ export class TodoComponent implements OnInit {
   }
   onClose($event: string) {
     this._store.dispatch(new DeleteTodoItem({id: $event}));
-    const snackBar = this.snackBar.open('Completed', 'Undo', {
-      duration: 5000
-    });
-    snackBar.onAction().subscribe(() => {
-      this._store.dispatch(<UndoActions>{ type: 'UNDO_STATE' });
-    });
   }
   turnAddMode() {
     this._store.dispatch(new PatchTodoFormMode('add'));
